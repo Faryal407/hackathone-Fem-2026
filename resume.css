@@ -1,0 +1,506 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c63ff;
+  --accent-color: #ff6b6b;
+  --dark-color: #2d3436;
+  --light-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+  --text-color: #2d3436;
+  --bg-color: #ffffff;
+  --form-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #dee2e6;
+  --navbar-bg: #ffffff;
+}
+
+body.dark-theme {
+  --text-color: #f0f0f0;
+  --bg-color: #1a1a1a;
+  --form-bg: #2d2d2d;
+  --input-bg: #3a3a3a;
+  --input-border: #555555;
+  --navbar-bg: #1a1a1a;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  transition: var(--transition);
+}
+
+body.dark-theme {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--form-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+/* ==================== NAVBAR STYLES ==================== */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  border-bottom: 1px solid var(--input-border);
+  transition: var(--transition);
+}
+
+.navbar-brand {
+  color: var(--text-color) !important;
+  font-weight: 700;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--text-color) !important;
+  transition: var(--transition);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* ==================== THEME TOGGLE BUTTON ==================== */
+.theme-toggle-btn {
+  background: none;
+  border: 2px solid var(--input-border);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--input-border);
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:active .theme-icon {
+  transform: rotate(20deg);
+}
+
+/* ==================== HEADING ==================== */
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+/* ==================== FORM STYLES ==================== */
+form {
+  padding: 40px;
+  background: var(--form-bg);
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.data {
+  color: var(--text-color) !important;
+}
+
+.form-control, .form-label {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+textarea.form-control:focus {
+  resize: vertical;
+}
+
+/* ==================== PROFILE IMAGE ==================== */
+#profileImagePreview {
+  display: block;
+  margin: 0 auto 30px;
+  border: 3px solid var(--primary-color);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  object-fit: cover;
+}
+
+#profileImagePreview:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center input[type="file"] {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+/* ==================== ROW LAYOUT ==================== */
+.row {
+  display: grid;
+  gap: 20px;
+}
+
+.row.mb-3 {
+  grid-template-columns: 1fr;
+  margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+  .row.mb-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .col-md-6 {
+    grid-column: span 1;
+  }
+}
+
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-md-6 .form-control {
+  flex: 1;
+}
+
+/* ==================== BUTTON STYLES ==================== */
+button[type="submit"], .btn {
+  padding: 14px 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+button[type="submit"]:active, .btn:active {
+  transform: translateY(0);
+}
+
+/* ==================== RESUME PREVIEW SECTION ==================== */
+#resumePreview {
+  background: var(--form-bg);
+  padding: 50px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  line-height: 1.8;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-image {
+  flex-shrink: 0;
+  border: 4px solid var(--primary-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.personal-info {
+  flex: 1;
+}
+
+.personal-info h2 {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.personal-info p {
+  margin: 8px 0;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.personal-info strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+#resumePreview h3 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-top: 25px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+  letter-spacing: 0.3px;
+}
+
+#resumePreview p {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* ==================== ACTION BUTTONS ==================== */
+.mt-4 {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#editBtn, #downloadBtn {
+  padding: 12px 30px;
+  font-size: 0.95rem;
+}
+
+#editBtn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+#downloadBtn {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .container {
+    border-radius: 8px;
+  }
+
+  form {
+    padding: 25px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  #profileImagePreview {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .resume-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .personal-info h2 {
+    font-size: 1.6rem;
+  }
+
+  .personal-info p {
+    font-size: 0.9rem;
+  }
+
+  #resumePreview {
+    padding: 25px;
+  }
+
+  #resumePreview h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  button[type="submit"], .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .mt-4 {
+    flex-direction: column;
+  }
+
+  .mt-4 button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    box-shadow: none;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  #profileImagePreview {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .personal-info h2 {
+    font-size: 1.3rem;
+  }
+
+  #resumePreview {
+    padding: 15px;
+  }
+
+  .form-control, .form-label {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== ANIMATION ==================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form {
+  animation: slideDown 0.5s ease;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w-50 {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* ==================== FORM VALIDATION ==================== */
+.form-control:invalid:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.form-control:valid {
+  border-color: #28a745;
+}
