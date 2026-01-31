@@ -441,3 +441,89 @@ function updateThemeIcon() {
     }
 }
  
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const userInfoForm = document.getElementById('userInfoForm');
+    const resumePreview = document.getElementById('resumePreview');
+    const editBtn = document.getElementById('editBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const profileImageInput = document.getElementById('profileImage');
+    const profileImagePreview = document.getElementById('profileImagePreview');
+
+    // Preview profile image on file selection
+    if (profileImageInput) {
+        profileImageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    profileImagePreview.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Handle form submission and navigation
+    if (userInfoForm) {
+        userInfoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInfo = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                summary: document.getElementById('summary').value,
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                skills: document.getElementById('skills').value,
+                profileImage: profileImagePreview.src
+            };
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+            window.location.href = 'generate.html';
+        });
+    }
+
+    // Check if we are on the resume page
+    if (resumePreview) {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if (userInfo) {
+            resumePreview.innerHTML = `
+                <div class="resume-header">
+                    <img src="${userInfo.profileImage}" alt="Profile Image" class="profile-image">
+                    <div class="personal-info">
+                        <h2>${userInfo.firstName} ${userInfo.lastName}</h2>
+                        <p><strong>Email:</strong> ${userInfo.email}</p>
+                        <p><strong>Phone:</strong> ${userInfo.phone}</p>
+                        <p><strong>Address:</strong> ${userInfo.address}</p>
+                    </div>
+                </div>
+
+                <h3>Professional Summary</h3>
+                <p>${userInfo.summary}</p>
+
+                <h3>Experience</h3>
+                <p>${userInfo.experience}</p>
+
+                <h3>Education</h3>
+                <p>${userInfo.education}</p>
+
+                <h3>Skills</h3>
+                <p>${userInfo.skills}</p>
+            `;
+        }
+
+        editBtn.addEventListener('click', function() {
+            window.location.href = 'resume.html';
+        });
+
+        downloadBtn.addEventListener('click', function() {
+            window.print();
+        });
+    }
+});
