@@ -409,7 +409,7 @@ function printResume(userInfo) {
     </html>
     `;
     
-    printWindow.document.write(printContent);
+    printWindow.document.writeln(printContent);
     printWindow.document.close();
     
     showNotification('Opening print dialog...', 'info');

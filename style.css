@@ -2,7 +2,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    /* background: linear-gradient(to left, rgb(8, 60, 90), rgb(9, 67, 92), rgb(7, 56, 88)); */
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
 }
 
 a {
@@ -61,25 +61,28 @@ a {
 }
 
 /* HERO SECTION */
-.hero{
-    background-image: url(./images/laptop.jpeg);
-    background-size: cover;
-}
 #hero {
-    background: url(./images/laptop.jpeg);
+    background: url(./images/background.jpeg);
     background-size: cover;
-  color: white;
+    /* background-color: rgb(228, 81, 13); */
+    /* background-size: cover; */
+  /* color: rgb(31, 123, 203); */
+  color: rgb(228, 81, 13);
+  /* height: 500px; */
   padding: 80px 20px;
 } 
 
 #hero h1 {
   font-size: 3rem;
   font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 #hero p {
   font-size: 1.2rem;
   margin-bottom: 25px;
+   font-weight: bold;
 }
 
 #hero .btn {
@@ -89,6 +92,10 @@ a {
 }
 
 /* TEMPLATE SECTION */
+/* .template-card-wrapper{
+background-image: url(./images/laptop.jpeg);
+
+} */
 #templates {
   display: flex;
   flex-direction: column;
@@ -108,7 +115,7 @@ a {
 }
 
 #templates h2::after {
-  content: '';
+  /* content: ''; */
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -139,6 +146,7 @@ a {
   display: flex;
   justify-content: center;
   width: 100%;
+
 }
 
 .template-card {
@@ -146,9 +154,12 @@ a {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: inherit;
-  padding: 20px;
-  background: white;
+  /* color: white; */
+  color: rgb(228, 81, 13);
+  padding: 5px;
+  height: 300px;
+   background: transparent;
+  /* background: white; */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
@@ -212,15 +223,17 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .template-image-container img {
   border-radius: 8px;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  /* height: 250px; */
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
+   box-shadow: 20px 20px 80px rgb(3, 117, 240);
+    border: 5px solid rgb(228, 81, 13) ;
   transition: transform 0.3s;
 }
 
@@ -234,6 +247,8 @@ a {
 }
 
 .template-content {
+  margin-bottom: 30px;
+  color: rgb(228, 81, 13);
   width: 100%;
 }
 
@@ -275,6 +290,10 @@ a {
 }
 
 /* FAQ */
+#faq{
+  margin-top: 80px;
+  color: rgb(228, 81, 13);
+}
 .accordion-button {
   font-weight: 500;
 }
@@ -284,7 +303,35 @@ a {
   background: #ffffff;
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.1); */
+   box-shadow: 20px 20px 80px rgb(3, 117, 240);
+    border: 5px solid rgb(228, 81, 13) ;
+}
+
+.contact-section .form-control {
+  padding: 12px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.contact-section .form-control:focus {
+  box-shadow: 0 6px 18px rgba(13,110,253,0.08);
+  border-color: #0d6efd;
+}
+
+.contact-section .btn {
+  min-width: 140px;
+  padding: 10px 22px;
+  border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+  .contact-section {
+    padding: 20px;
+  }
+  .contact-section .btn {
+    width: 100%;
+  }
 }
 
 /* FOOTER */
